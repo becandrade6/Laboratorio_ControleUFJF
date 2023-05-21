@@ -23,6 +23,15 @@ df['Tempo'] = df['Tempo'].map(divide)
 #Atraso de transporte (para o gráfico) será composto de duas parcelas:
 #18 de atraso do sistema + 8 seg até acionar o comando do relé (degrau ter sido dado)
 
+#Agora, utilizaremos do módulo control para fazer os cálculos com funções de transferências, a partir
+#dos valores listados acima.
+
+#O método .pade() simula uma determinada função de transferência de ordem a escolher que trará um atraso de transporte
+#especificado, por exemplo especificamos o 26.
+
+#o método .tf() gera uma função de transferência a partir do numerador e denominador passados para ele
+# funciona com control.tf(num,den) em que num é uma lista e den é outra lista com os coeficientes dos mesmos.
+
 num,den = control.pade(26,3,-2) #utilizamos o comando pade para otermos uma FT que aproxima o atraso de transporte
                                 #26 de 26seg de atraso, grau 3 no denominador e grau 1 no numerador.
 delay = control.tf(num,den)     #formamos a FT do delay com o numerador e denominador recebido pelo pade
@@ -48,9 +57,3 @@ plt.xlabel('Tempo (s)') #legenda do eixo X
 plt.ylabel('Temperatura (°C)') #legenda do eixo Y
 plt.legend() #legenda o gráfico com o nome de cada curva
 plt.show() #mostra o gráfico
-
-
-
-
-
-
