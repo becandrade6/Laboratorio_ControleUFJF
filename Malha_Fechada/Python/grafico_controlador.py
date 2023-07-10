@@ -29,15 +29,15 @@ fig = px.line(
     title="Gráfico Controlador P Kp = 30 - Setpoint 80°C",
 )
 
-# fig.add_trace(
-# go.Scatter(
-#  x=[df["Tempo (s)"][indices[0][0]], df["Tempo (s)"][indices[0][0]]],
-#   y=[0, df["Saida para relé (% da rede)"].max()],
-#    mode="lines",
-#     line=dict(color="black", width=2, dash="dash"),
-#      name="Tempo acomodação (2%)",
-#   )
-# )
+fig.add_trace(
+ go.Scatter(
+ x=[df["Tempo (s)"][indices[0][0]], df["Tempo (s)"][indices[0][0]]],
+  y=[0, df["Saida para relé (% da rede)"].max()],
+    mode="lines",
+     line=dict(color="black", width=2, dash="dash"),
+      name="Tempo acomodação (2%)",
+   )
+ )
 
 fig.update_yaxes(title_text="Temperatura (°C)")
 
